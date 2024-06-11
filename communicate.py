@@ -11,8 +11,8 @@ import tracemalloc
 tracemalloc.start()
 
 img_size = 400
-classifier = Classifier("C:\\Users\\Lenovo\\PycharmProjects\\hand_sign_vn\\streamlit_app\\models\\keras_model_13chars.h5",
-                        "C:\\Users\\Lenovo\\PycharmProjects\\hand_sign_vn\\streamlit_app\\models\\labels_13chars.txt")
+classifier = Classifier("best_model_1106.h5",
+                        "labels_13chars.txt")
 white = np.ones((img_size, img_size), np.uint8) * 255
 cv2.imwrite("white.jpg", white)
 
@@ -49,7 +49,7 @@ class VideoProcessor:
                 hand = hands[0]
                 x, y, w, h = hand['bbox']
                 image = frm[y - self.offset:y + h + self.offset, x - self.offset:x + w + self.offset]
-                white = cv2.imread("C:\\Users\\Lenovo\\PycharmProjects\\hand_sign_vn\\streamlit_app\\white.jpg")
+                white = cv2.imread("white.jpg")
                 handz, image = hd2.findHands(image, draw=True, flipType=True)
                 if handz:
                     hand = handz[0]
