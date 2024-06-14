@@ -27,10 +27,10 @@ labels for keras_model_7chars.h5
 """
 labels for keras_model_13chars.h5
 """
-# labels = ['chung toi', 'cong bang', 'den truong', 'di','doi xu','duoc','giao tiep',
-#           'hoa nhap','hoc','moi nguoi', 'muon', 'toi','xung quanh']
-labels = ['chúng tôi', 'công bằng','đến trường', 'đi', 'đối xử','được', 'giao tiếp',
-          'hòa nhập với','học','mọi người', 'muốn', 'tôi', 'xung quanh']
+labels = ['chung toi', 'cong bang', 'den truong', 'di','doi xu','duoc','giao tiep',
+          'hoa nhap','hoc','moi nguoi', 'muon', 'toi','xung quanh']
+# labels = ['chúng tôi', 'công bằng','đến trường', 'đi', 'đối xử','được', 'giao tiếp',
+#           'hòa nhập với','học','mọi người', 'muốn', 'tôi', 'xung quanh']
 # Streamlit app title
 st.title("Hand Sign Detection")
 class VideoProcessor:
@@ -83,7 +83,7 @@ class VideoProcessor:
                     else:
                         self.current_label = "không nhận ra"
                     # print("trong ham: ",  self.current_label)
-                    # frm = cv2.putText(frm, self.current_label, (x, y - 26), cv2.FONT_HERSHEY_COMPLEX, 1.7, (255, 255, 255), 2)
+                    frm = cv2.putText(frm, self.current_label, (x, y - 26), cv2.FONT_HERSHEY_COMPLEX, 1.7, (255, 255, 255), 2)
 
             return av.VideoFrame.from_ndarray(frm, format='bgr24')
         except Exception as e:
@@ -108,16 +108,16 @@ with col2:
     result_container = st.empty()
 
 
-while webrtc_ctx.video_processor:
-    current_label = fun_label(webrtc_ctx.video_processor)
-    print("ngoai ham:", current_label)
+# while webrtc_ctx.video_processor:
+#     current_label = fun_label(webrtc_ctx.video_processor)
+#     print("ngoai ham:", current_label)
 
-    # Cập nhật kết quả
-    # result_container.markdown(f"<div style='font-size:30px;'>Predict: {current_label}</div>", unsafe_allow_html=True)
-    result_container.markdown("<div style='font-size:30px;'>Predict:</div>"
-                              f"<div style='font-size:25px;'>{current_label}</div>", unsafe_allow_html=True)
+#     # Cập nhật kết quả
+#     # result_container.markdown(f"<div style='font-size:30px;'>Predict: {current_label}</div>", unsafe_allow_html=True)
+#     result_container.markdown("<div style='font-size:30px;'>Predict:</div>"
+#                               f"<div style='font-size:25px;'>{current_label}</div>", unsafe_allow_html=True)
 
-    time.sleep(1)
+#     time.sleep(1)
 huongdan_button = st.button("Trợ giúp")
 if huongdan_button:
     st.query_params["page"] = "huongdan_button"
